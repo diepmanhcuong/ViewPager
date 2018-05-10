@@ -1,0 +1,19 @@
+ViewPager du?c h? tr? v?i 3 lo?i Adapter
+	+ PagerAdapter
+	+ FragmentPagerAdapter
+	+ FragmentStatePagerAdapter
+ta c?n phân bi?t 3 lo?i adapter này:
+- PagerAdapter du?c s? d?ng v?i ViewPager don gi?n v?i các view
+	có 3 phuong th?c override:
+		+ instantiateItem(): dây là method t?o page ? nh?ng position nh?t d?nh và tái s? d?ng theo position c?a m?ng data, nó tuong t? nhu method getView hay bindViewHolder c?a listViewAdapter ho?c RecyclerView
+		+ getCount():  l?y s? lu?ng ph?n t? trong m?ng data c?n hi?n th?
+		+ detroyitem():  Xóa page t? ViewPager, ngoài ra ta có th? s? d?ng hàm removeView() d? xóa di object ho?c removeViewAt() d? xóa object d?a trên position. 
+		+ isViewFromObject: tr? v? object d?a trên instantiateItem dang hi?n th? vào position
+
+-  FragmentPagerAdapter và  FragmentStatePagerAdapter: g?n nhu gi?ng nhau, nó ch? khác ph?n qu?n lý b? nh?,
+-  FragmentPagerAdapter thu?ng du?c dùng khi ít page vì khi s? d?ng FragmentPageAdapter nó s? luu d? li?u trong b? nh? cache, khi chuy?n qua fragment khác, thay vì remove thì FragmentPagerAdapter s? g?i hàm detach fragment di?u này có nghia là các fragment v?n còn trong FragmentManager
+- FragmentStatePagerAdapter: thì nó s? luu savedInstanceState và destroyView khi mà fragment không còn hi?n th?, Fragment ch? gi? t?i da 3 fragment, nó s? phù h?p v?i s? lu?ng fragment nhi?u.
+
+
+	FragmentPagerAdapter và  FragmentStatePagerAdapter:
+		+ có 2 phuong th?c chính dó là getItem() và getCount()
